@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>멀티비타민 제품 비교</title>
+</head>
+<body>
+    
+    <form action = "/insert" method="post">
+        {% csrf_token %}
+            <button name="choice" value="임팩타민프리미엄">임팩타민프리미엄정</button>
+            <button name="choice" value="비맥스메타정">비맥스메타정</button>        
+        </form>
+        {% for sel in selectionList %}
+        <div>{{sel}}</div>
+        {% endfor %}
+
+    <form action = "/show" method="post">
+        {% csrf_token %}
+            <button name="choice" value="show">비교</button>      
+    </form>
+    {% for prod in productList %}
+        <div>{{prod.riboflavin}}</div>
+        {% endfor %}
+
+    <!-- {% for prod in productList %}
+        <div>{{prod.riboflavin}}</div>
+    {% endfor %} -->
+
+
+    <!-- <form action = "/show" method="get">
+        {% csrf_token %}
+            <button name="show">보여줘</button>
+            <table class="table table-hover table-responsive">
+                <thead>
+                    <th>이름</th><th>니코틴산아미드</th><th>리보플라빈</th>
+                </thead>
+                <tbody>
+                    {% for p in productList %}
+                    <tr>  
+                        <td>{{ p.name }}</td><td>{{ p.nicotineacid }}</td><td>{{ p.riboflavin }}</td>
+                    </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+            
+    </form> -->
+
+    
+
+</body>
+</html>
