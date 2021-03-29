@@ -11,3 +11,9 @@ template 로 로드한 각 model object 를 table로 보여줘야 한다.
 배운거 활용해 보려고 일단 기존 파일 git에 보내보자. 근데 또 까먹었네
 하는 방법 찾아보자. 아래 링크 참조
 https://tagilog.tistory.com/377
+
+# 21.01.19
+
+테이블 채우는 노가다 해주자. template 노가다
+그 다음엔 CSS 노가다
+그리고 나서 JS로 내가 원하던 기능 넣기

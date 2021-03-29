@@ -1,53 +1,52 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>멀티비타민 제품 비교</title>
+    <style>
+        /* table { border-collapse: collapse; white-space: nowrap; }
+tr { display: inline-block; }
+th, td { display: block; border: 1px solid black; }
+tbody, thead { display: inline-block; vertical-align: top; }
+
+
+tbody {
+  width: 300px;
+  overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+} */
+
+td {
+  height: 50px;
+}
+tbody tr { margin-right: -5px;}
+        .big{
+            background: #ffa;
+        }
+    </style>
+    
 </head>
+
 <body>
-    
-    <form action = "/insert" method="post">
+    <form action="/insert" method="post">
         {% csrf_token %}
-            <button name="choice" value="임팩타민프리미엄">임팩타민프리미엄정</button>
-            <button name="choice" value="비맥스메타정">비맥스메타정</button>        
-        </form>
-        {% for sel in selectionList %}
-        <div>{{sel}}</div>
-        {% endfor %}
-
-    <form action = "/show" method="post">
-        {% csrf_token %}
-            <button name="choice" value="show">비교</button>      
+        <button name="choice" value="임팩타민프리미엄정">임팩타민프리미엄정</button>
+        <button name="choice" value="비맥스메타정">비맥스메타정</button>
     </form>
-    {% for prod in productList %}
-        <div>{{prod.riboflavin}}</div>
-        {% endfor %}
+    {% for sel in selectionList %}
+    <div>{{sel}}</div>
+    {% endfor %}
 
-    <!-- {% for prod in productList %}
-        <div>{{prod.riboflavin}}</div>
-    {% endfor %} -->
-
-
-    <!-- <form action = "/show" method="get">
+    <!-- 성공적으로 나와서 테이블만 채워주고 꾸며주면 일단 된다. -->
+    <form action="/show" method="post">
         {% csrf_token %}
-            <button name="show">보여줘</button>
-            <table class="table table-hover table-responsive">
-                <thead>
-                    <th>이름</th><th>니코틴산아미드</th><th>리보플라빈</th>
-                </thead>
-                <tbody>
-                    {% for p in productList %}
-                    <tr>  
-                        <td>{{ p.name }}</td><td>{{ p.nicotineacid }}</td><td>{{ p.riboflavin }}</td>
-                    </tr>
-                    {% endfor %}
-                    
-                </tbody>
-            </table>
-            
-    </form> -->
-
-    
-
+        <button name="show">보여줘</button>
+        
+    </form>
 </body>
+<script>
+        
+</script>
 </html>

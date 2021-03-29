@@ -36,4 +36,4 @@ def showProduct(req):
     context = {
         "productList": productList
     }
-    return render(req, "index.html", context=context)
+    return render(req, "compare.html", context=context)

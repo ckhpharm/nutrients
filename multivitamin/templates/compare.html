@@ -1,0 +1,155 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>멀티비타민 제품 비교</title>
+    <style>
+        /* table { border-collapse: collapse; white-space: nowrap; }
+tr { display: inline-block; }
+th, td { display: block; border: 1px solid black; }
+tbody, thead { display: inline-block; vertical-align: top; }
+
+
+tbody {
+  width: 300px;
+  overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+} */
+
+td {
+  height: 50px;
+}
+tbody tr { margin-right: -5px;}
+        .big{
+            background: #ffa;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <form action="/insert" method="post">
+        {% csrf_token %}
+        <button name="choice" value="임팩타민프리미엄정">임팩타민프리미엄정</button>
+        <button name="choice" value="비맥스메타정">비맥스메타정</button>
+    </form>
+    {% for sel in selectionList %}
+    <div>{{sel}}</div>
+    {% endfor %}
+
+    <!-- 성공적으로 나와서 테이블만 채워주고 꾸며주면 일단 된다. -->
+    <form action="/show" method="post">
+        {% csrf_token %}
+        <button name="show">보여줘</button>
+        <table class="table-hover">
+            <tbody>
+                <tr>
+                    <td>이름</td>
+                    <td>비스벤티아민</td>
+                    <td>푸르설티아민</td>
+                    <td>벤포티아민</td>
+                    <td>비타민B2(리보플라빈)</td>
+                    <td>활성형비타민B2</td>
+                    <td>비타민B3</td>
+                    <td>비타민B5</td>
+                    <td>비타민B6</td>
+                    <td>활성형B6</td>
+                    <td>비타민B12</td>
+                    <td>비타민C</td>
+                    <td>비타민D3</td>
+                    <td>비타민E</td>
+                    <td>엽산</td>
+                    <td>코큐텐</td>
+                    <td>콜린</td>
+                    <td>비오틴</td>
+                    <td>UDCA</td>
+                    <td>베타카로텐</td>
+                    <td>감마오리자놀</td>
+                    <td>로얄젤리</td>
+                    <td>이노시톨</td>
+                    <td>마그네슘</td>
+                    <td>망간</td>
+                    <td>칼슘</td>
+                    <td>몰리브덴</td>
+                    <td>콘드로이친</td>
+                    <td>셀레늄</td>
+                    <td>철</td>
+                    <td>아연</td>
+                </tr>
+            <!-- </tbody>
+            <tbody> -->
+                {% for p in productList %}
+                <tr>
+                    <td>{{ p.name }}</td>
+                    <td>{{ p.bisbenthiamine }}</td>
+                    <td>{{ p.fursulthiamine }}</td>
+                    <td>{{ p.benfothiamine }}</td>
+                    <td>{{ p.riboflavin }}</td>
+                    <td>{{ p.butyrated_vitB2 }}</td>
+                    <td>{{ p.vitB3 }}</td>
+                    <td>{{ p.vitB5 }}</td>
+                    <td>{{ p.pyridoxine }}</td>
+                    <td>{{ p.pyridoxalphosphate }}</td>
+                    <td>{{ p.vitB12 }}</td>
+                    <td>{{ p.vitC }}</td>
+                    <td>{{ p.vitD3 }}</td>
+                    <td>{{ p.vitE }}</td>
+                    <td>{{ p.folicacid }}</td>
+                    <td>{{ p.coQ10 }}</td>
+                    <td>{{ p.choline }}</td>
+                    <td>{{ p.biotin }}</td>
+                    <td>{{ p.ursodeoxycholicacid }}</td>
+                    <td>{{ p.betacarotene }}</td>
+                    <td>{{ p.gammaoryzanol }}</td>
+                    <td>{{ p.royaljelly }}</td>
+                    <td>{{ p.inositol }}</td>
+                    <td>{{ p.magnesium }}</td>
+                    <td>{{ p.manganese }}</td>
+                    <td>{{ p.calcium }}</td>
+                    <td>{{ p.molybdenum }}</td> 
+                    <td>{{ p.chondroitin }}</td>
+                    <td>{{ p.selenium }}</td>
+                    <td>{{ p.ferrum }}</td>
+                    <td>{{ p.zinc }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+</body>
+<script>
+        const test = document.querySelector('.table-hover')
+        // 반복문으로 컬럼별 값 비교
+        // 나는 컬럼별로 인덱스가 늘어날줄알았는데 row 별로 index가 늘어난다. 그래서 같은 컬럼을 비교할 때에 컬럼의 총길이만큼 더해서 비교해줘야한다)
+        // 양이 같은 경우도 추가 해줘야 한다. else if 로
+        for (i = 1; i < 31; i++) {
+             if (parseFloat(test.getElementsByTagName("td")[i].textContent) > parseFloat(test.getElementsByTagName("td")[i+31].textContent)) {
+                 test.getElementsByTagName("td")[i].classList.add("big")
+             } else{
+                 test.getElementsByTagName("td")[i+31].classList.add("big")
+             }
+         }
+         function Swap(){
+    var t= document.getElementsByTagName('tbody')[0],
+    r= t.getElementsByTagName('tr'),
+    cols= r.length, rows= r[0].getElementsByTagName('td').length,
+    cell, next, tem, i= 0, tbod= document.createElement('tbody');
+    console.log(t)
+
+    while(i<rows){
+        cell= 0;
+        tem= document.createElement('tr');
+        while(cell<cols){
+            next= r[cell++].getElementsByTagName('td')[0];
+            tem.appendChild(next);
+        }
+        tbod.appendChild(tem);
+        ++i;
+    }
+    t.parentNode.replaceChild(tbod, t);
+}
+Swap()
+</script>
+</html>
