@@ -59,7 +59,10 @@
 
         .selected_list {
             position: relative;
-            z-index: -10;
+            bottom: 15%;
+            right: 3%;
+            width: 180px;
+            height: 45px;
         }
     </style>
 
@@ -109,15 +112,22 @@
         {% for p in product %}
         <form action="/" method="post">
             {% csrf_token %}
-            <button class="productItem" name="choice" value="{{ p.name }}" onclick="ShowselItem(this.value)"><img
-                    src="{%static 'img/impactamin.jpg'%}" alt="{{ p.name }}" />
+            <!-- 제품에 맞게 이미지 저절로 선택하게 p.name을 img 소스에서 활용해야 -->
+            <button class="productItem" name="choice" value="{{ p.name }}" "><img
+                    src=" {{ p.image.url }}" alt="{{ p.name }}" />
         </form>
         {% endfor %}
     </div>
 
-    {% for sel in selectionList %}
-    <div class="selected_list">{{sel}}</div>
-    {% endfor %}
+    <!-- {% for sel in selectionList %}
+    <div class="selected_list">
+        <div>{{sel}}</div>
+
+    </div>
+    {% endfor %} -->
+    <div>{{ firstProd }}</div>
+    <div>{{ secondProd }}</div>
+
 
 
     <form action="/show" method="post">
@@ -128,9 +138,13 @@
     </form>
     <script>
 
-        function ShowselItem(val) {
-            console.log(val)
-        }
+        // function ShowselItem(val) {
+        //     var temp = document.createElement('div');
+        //     temp.innerHTML = val;
+        //     buttonsel.appendChild(temp.firstChild)
+
+        // }
+
     </script>
 
 </body>

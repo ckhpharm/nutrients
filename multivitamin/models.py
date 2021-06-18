@@ -36,6 +36,7 @@ class Product(models.Model):
     gammaoryzanol = models.FloatField(null=True)
     butyrated_vitB2 = models.FloatField(null=True)
     pyridoxalphosphate = models.FloatField(null=True)
+    image = models.ImageField(upload_to='images', null = True, blank = True)
 
 
 

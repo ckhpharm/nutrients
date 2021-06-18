@@ -6,16 +6,19 @@
     <title>멀티비타민 제품 비교</title>
     <style>
         td {
-        height: 50px;
-        border: 1px solid #444444;
+            height: 50px;
+            border: 1px solid #444444;
         }
-        tbody tr { margin-right: -5px;}
-                .big{
-                    background: #ffa;
-                }
-            
+
+        tbody tr {
+            margin-right: -5px;
+        }
+
+        .big {
+            background: #ffa;
+        }
     </style>
-    
+
 </head>
 
 <body>
@@ -67,7 +70,7 @@
                     <td>철</td>
                     <td>아연</td>
                 </tr>
-            <!-- </tbody>
+                <!-- </tbody>
             <tbody> -->
                 {% for p in productList %}
                 <tr>
@@ -97,7 +100,7 @@
                     <td>{{ p.magnesium }}</td>
                     <td>{{ p.manganese }}</td>
                     <td>{{ p.calcium }}</td>
-                    <td>{{ p.molybdenum }}</td> 
+                    <td>{{ p.molybdenum }}</td>
                     <td>{{ p.chondroitin }}</td>
                     <td>{{ p.selenium }}</td>
                     <td>{{ p.ferrum }}</td>
@@ -111,44 +114,45 @@
 <script>
     // table value compare. to avoid hard-coding
     // depending on changing table swap method, compare function is also changed
-    function Compare(){
+    function Compare() {
         var test = document.querySelector('tbody')
         var tableData = test.getElementsByTagName("td")
-        var tableLen = (tableData.length)/3
-        for (i = tableLen+1; i < tableLen*2; i++) {
-            if (parseFloat(tableData[i].textContent) > parseFloat(tableData[i+tableLen].textContent)) {
+        var tableLen = (tableData.length) / 3
+        for (i = tableLen + 1; i < tableLen * 2; i++) {
+            if (parseFloat(tableData[i].textContent) > parseFloat(tableData[i + tableLen].textContent)) {
                 tableData[i].classList.add("big")
-             } else{
-                tableData[i+tableLen].classList.add("big")
-             }     
-         }
-    }
-    
-    
-     
-    // table column-row swap function
-    function Swap(){
-    var t= document.getElementsByTagName('tbody')[0],
-    r= t.getElementsByTagName('tr'),
-    cols= r.length, rows= r[0].getElementsByTagName('td').length,
-    cell, next, tem, i= 0, tbod= document.createElement('tbody');
-    console.log(t)
-
-    while(i<rows){
-        cell= 0;
-        tem= document.createElement('tr');
-        while(cell<cols){
-            next= r[cell++].getElementsByTagName('td')[0];
-            tem.appendChild(next);
+            } else {
+                tableData[i + tableLen].classList.add("big")
+            }
         }
-        tbod.appendChild(tem);
-        ++i;
     }
-    t.parentNode.replaceChild(tbod, t);
-}
-Compare()
-Swap()
+
+
+
+    // table column-row swap function
+    function Swap() {
+        var t = document.getElementsByTagName('tbody')[0],
+            r = t.getElementsByTagName('tr'),
+            cols = r.length, rows = r[0].getElementsByTagName('td').length,
+            cell, next, tem, i = 0, tbod = document.createElement('tbody');
+        console.log(t)
+
+        while (i < rows) {
+            cell = 0;
+            tem = document.createElement('tr');
+            while (cell < cols) {
+                next = r[cell++].getElementsByTagName('td')[0];
+                tem.appendChild(next);
+            }
+            tbod.appendChild(tem);
+            ++i;
+        }
+        t.parentNode.replaceChild(tbod, t);
+    }
+    Compare()
+    Swap()
 
 
 </script>
+
 </html>
